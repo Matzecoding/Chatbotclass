@@ -3,11 +3,12 @@ from event_handler import MyEventHandler
 from wiki_utills import login_to_wiki
 import os
 from config import assistant_id
+import streamlit as st
 
 
 def initialize_chatbot():
     """Initialisiert den OpenAI-Client und die Wiki-Session."""
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
     session = login_to_wiki("Matze", "Head$ripyeah")  # Beispiel-Login-Daten
     vector_store_id = "vs_56heQwFcoW60pFQuPCX48O8l"
     thread = client.beta.threads.create()
